@@ -49,27 +49,27 @@ class cnacorrea-bash (
   }
 
   concat::fragment { 'cnacorrea-bash_umask':
-    target  => 'cnacorrea-bash',
+    target  => 'cnacorrea-bash_file',
     content => template('cnacorrea-bash/100-bash-umask.sh.erb'),
     order   => '100',
   }
 
   concat::fragment { 'cnacorrea-bash_prompt':
-    target  => 'cnacorrea-bash',
+    target  => 'cnacorrea-bash_file',
     content => template('cnacorrea-bash/100-bash-prompt.sh.erb'),
     order   => '200',
   }
 
   if ($network_proxy != '') {
     concat::fragment { 'cnacorrea-bash_proxy.sh':
-      target  => 'cnacorrea-bash',
+      target  => 'cnacorrea-bash_file',
       content => template('cnacorrea-bash/100-bash-proxy.sh.erb'),
       order   => '300',
     }
   }
 
   concat::fragment { 'cnacorrea-bash_timeout':
-    target  => 'cnacorrea-bash',
+    target  => 'cnacorrea-bash_file',
     content => template('cnacorrea-bash/100-bash-timeout.sh.erb'),
     order   => '400',
   }

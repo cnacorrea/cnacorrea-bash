@@ -39,7 +39,7 @@ class cnacorrea-bash (
   $umask         = '0027',
   $network_proxy = '',
   $timeout       = '600',
-  $header        = "# puppet-provisioned file. local edits will be lost.\n#",
+  $header        = "# puppet-provisioned file. local edits are going to be lost!\n#\n",
 ) {
   File {
     backup => false,

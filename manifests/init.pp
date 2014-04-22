@@ -39,6 +39,7 @@ class cnacorrea-bash (
   $umask         = '0027',
   $network_proxy = '',
   $timeout       = '600',
+  $header        = "# puppet-provisioned file. local edits will be lost.\n#",
 ) {
   File {
     backup => false,
@@ -47,6 +48,13 @@ class cnacorrea-bash (
   concat { 'cnacorrea-bash_file':
     path => '/etc/profile.d/cnacorrea-bash.sh',
   }
+
+  concat::fragment { 'cnacorrea-bash_header':
+    target  => 'cnacorrea-bash_file',
+    content => $header,
+    order   => '001',
+  }
+    
 
   concat::fragment { 'cnacorrea-bash_umask':
     target  => 'cnacorrea-bash_file',

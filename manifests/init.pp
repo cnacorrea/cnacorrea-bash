@@ -1,39 +1,42 @@
-# == Class: bash
+# == Class: cnacorrea-bash
 #
-# Full description of class bash here.
+# This class is meant to manage the bash shell environment. It provides a
+# sysadmin-friendly prompt, and can be used enforce system's default umask, network proxy
+# and idle session timeout. When applied to a host, it will add a cnacorrea-bash.sh script
+# to the /etc/profile.d directory with the desired settings.
 #
 # === Parameters
 #
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
-#
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
+# [*umask*]
+#   Sets system's default umask. Default: 0027
+# [*network_proxy*]
+#   If non-empty, sets network proxy to be used. The expected format is either fqdn:port
+#   or ipaddress:port. It is assumed that the proxy server is able to provide HTTP/S and
+#   FTP proxying, so environment vars for the 3 protocols are set (http_proxy, https_proxy
+#   and ftp_proxy). Default: empty
+# [*timeout*]
+#   Time (seconds) idle sessions will wait before auto-logoff. Default: 600
+# [*header*]
+#   String containing the header for the generated profile script, maybe warning fellow
+#   sysadmins that the file is being managed by Puppet. A simple comment is set as
+#   default. 
 #
 # === Examples
 #
-#  class { bash:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
+#  class { cnacorrea-bash:
+#    umask         => '0022',
+#    network_proxy => 'proxy.cnacorrea.it:3128',
+#    timeout       => '900',
+#    header        => '# puppet file. changes will be overwritten.\n# -- sysadmin\n',
 #  }
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Carlos N. A. Correa <carlos.nilton@gmail.com>
 #
 # === Copyright
 #
-# Copyright 2014 Your name here, unless otherwise noted.
+# Copyright 2014 Carlos N. A. Correa.
 #
 class cnacorrea-bash (
   $umask         = '0027',

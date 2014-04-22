@@ -1,11 +1,12 @@
 name    'cnacorrea-bash'
 version '0.1.0'
-source 'UNKNOWN'
 author 'cnacorrea'
 license 'Apache License, Version 2.0'
-summary 'UNKNOWN'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
+summary 'This module is meant to manage the bash shell environment.'
+description "This module is meant to manage the bash shell environment. It provides a
+       sysadmin-friendly prompt, and can be used enforce system's default umask, network
+       proxy and idle session timeout."
+project_page 'https://github.com/cnacorrea/cnacorrea-bash'
 
-## Add dependencies, if any:
-# dependency 'username/name', '>= 1.2.0'
+dependency 'puppetlabs/stdlib', '>= 3.2.1'
+dependency 'puppetlabs/concat', '>= 1.0.2'

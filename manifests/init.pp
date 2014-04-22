@@ -36,44 +36,39 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class cnacorrea-bash (
-  $umask = '0027',
+  $umask         = '0027',
   $network_proxy = '',
-  $timeout = '600',
+  $timeout       = '600',
 ) {
   File {
     backup => false,
   }
 
-  concat { 'cnacorrea-bash':
+  concat { 'cnacorrea-bash_file':
     path => '/etc/profile.d/cnacorrea-bash.sh',
   }
 
-  file { '100-bash-umask.sh':
-    path    => '/etc/profile.d/100-bash-umask.sh',
-    ensure  => file,
+  concat::fragment { 'cnacorrea-bash_umask':
+    target  => 'cnacorrea-bash',
     content => template('cnacorrea-bash/100-bash-umask.sh.erb'),
+    order   => '100',
   }
 
-  file { '100-bash-prompt.sh':
-    path    => '/etc/profile.d/100-bash-prompt.sh',
-    ensure  => file,
+  concat::fragment { 'cnacorrea-bash_prompt':
+    target  => 'cnacorrea-bash',
     content => template('cnacorrea-bash/100-bash-prompt.sh.erb'),
+    order   => '200',
   }
 
   if ($network_proxy != '') {
-    file { '100-bash-proxy.sh':
-      path    => '/etc/profile.d/100-bash-proxy.sh',
-      ensure  => file,
+    concat::fragment { 'cnacorrea-bash_proxy.sh':
+      target  => 'cnacorrea-bash',
       content => template('cnacorrea-bash/100-bash-proxy.sh.erb'),
-    }
-  } else {
-    file { '100-bash-proxy.sh':
-      path   => '/etc/profile.d/100-bash-proxy.sh',
-      ensure => absent,
+      order   => '300',
     }
   }
 
-  concat::fragment { 'bash_timeout':
+  concat::fragment { 'cnacorrea-bash_timeout':
     target  => 'cnacorrea-bash',
     content => template('cnacorrea-bash/100-bash-timeout.sh.erb'),
     order   => '400',

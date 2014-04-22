@@ -1,4 +1,4 @@
-cnacorrea-bash
+bash
 
 This module is meant to manage the bash shell environment. It provides a sysadmin-friendly
 prompt, and can be used enforce system's default umask, network proxy and idle session

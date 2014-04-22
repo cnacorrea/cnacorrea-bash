@@ -1,4 +1,4 @@
-# == Class: cnacorrea-bash
+# == Class: bash
 #
 # This class is meant to manage the bash shell environment. It provides a
 # sysadmin-friendly prompt, and can be used enforce system's default umask, network proxy
@@ -23,7 +23,7 @@
 #
 # === Examples
 #
-#  class { cnacorrea-bash:
+#  class { bash:
 #    umask         => '0022',
 #    network_proxy => 'proxy.cnacorrea.it:3128',
 #    timeout       => '900',
@@ -38,7 +38,7 @@
 #
 # Copyright 2014 Carlos N. A. Correa.
 #
-class cnacorrea-bash (
+class bash (
   $umask         = '0027',
   $network_proxy = '',
   $timeout       = '600',
@@ -60,27 +60,27 @@ class cnacorrea-bash (
     
   concat::fragment { 'cnacorrea-bash_prompt':
     target  => 'cnacorrea-bash_file',
-    content => template('cnacorrea-bash/100-bash-prompt.sh.erb'),
+    content => template('bash/100-bash-prompt.sh.erb'),
     order   => '100',
   }
   
   concat::fragment { 'cnacorrea-bash_umask':
     target  => 'cnacorrea-bash_file',
-    content => template('cnacorrea-bash/200-bash-umask.sh.erb'),
+    content => template('bash/200-bash-umask.sh.erb'),
     order   => '200',
   }
 
   if ($network_proxy != '') {
     concat::fragment { 'cnacorrea-bash_proxy.sh':
       target  => 'cnacorrea-bash_file',
-      content => template('cnacorrea-bash/300-bash-proxy.sh.erb'),
+      content => template('bash/300-bash-proxy.sh.erb'),
       order   => '300',
     }
   }
 
   concat::fragment { 'cnacorrea-bash_timeout':
     target  => 'cnacorrea-bash_file',
-    content => template('cnacorrea-bash/400-bash-timeout.sh.erb'),
+    content => template('bash/400-bash-timeout.sh.erb'),
     order   => '400',
   }
 }

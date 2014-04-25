@@ -8,19 +8,20 @@
 # === Parameters
 #
 # [*umask*]
-#   Sets system's default umask. Default: 0027
+#   Sets system's default umask. Default: undef
 # [*network_proxy*]
 #   If non-empty, sets network proxy to be used. The expected format is either fqdn:port
 #   or ipaddress:port. It is assumed that the proxy server is able to provide HTTP/S and
 #   FTP proxying, so environment vars for the 3 protocols are set (http_proxy, https_proxy
-#   and ftp_proxy). Default: empty
+#   and ftp_proxy). Default: undef
 # [*timeout*]
 #   Time (seconds) idle sessions will wait before auto-logoff. Default: 600
 # [*header*]
 #   String containing the header for the generated profile script, maybe warning fellow
 #   sysadmins that the file is being managed by Puppet. A simple comment is set as
 #   default. 
-#
+# [*color*]
+#   Sets colors for your PS1. Default: undef
 # === Examples
 #
 #  class { bash:
@@ -33,14 +34,16 @@
 # === Authors
 #
 # Carlos N. A. Correa <carlos.nilton@gmail.com>
+# Renan Vicente Gomes da Silva <renanvice@gmail.com>
 #
 # === Copyright
 #
 # Copyright 2014 Carlos N. A. Correa.
 #
 class bash (
-  $umask         = '0027',
-  $network_proxy = '',
+  $color         = undef,
+  $umask         = undef,
+  $network_proxy = undef,
   $timeout       = '600',
   $header        = "# puppet-provisioned file. local edits are going to be lost!\n#\n",
 ) {
@@ -63,18 +66,20 @@ class bash (
     content => template('bash/100-bash-prompt.sh.erb'),
     order   => '100',
   }
-  
-  concat::fragment { 'cnacorrea-bash_umask':
-    target  => 'cnacorrea-bash_file',
-    content => template('bash/200-bash-umask.sh.erb'),
-    order   => '200',
-  }
-
-  if ($network_proxy != '') {
-    concat::fragment { 'cnacorrea-bash_proxy.sh':
+  if($umask) {
+    concat::fragment { 'cnacorrea-bash_umask':
       target  => 'cnacorrea-bash_file',
-      content => template('bash/300-bash-proxy.sh.erb'),
-      order   => '300',
+      content => template('bash/200-bash-umask.sh.erb'),
+      order   => '200',
+    }
+  }
+  if($network_proxy) {
+    if ($network_proxy != '') {
+      concat::fragment { 'cnacorrea-bash_proxy.sh':
+        target  => 'cnacorrea-bash_file',
+        content => template('bash/300-bash-proxy.sh.erb'),
+        order   => '300',
+      }
     }
   }
 

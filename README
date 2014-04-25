@@ -7,10 +7,11 @@ timeout. When applied to a host, it will add a cnacorrea-bash.sh script to the
 
 A sample use would be:
 
-class { cnacorrea-bash:
+class { bash:
   umask         => '0022',
   network_proxy => 'proxy.cnacorrea.it:3128',
   timeout       => '900',
+  color         => 'true'
   header        => '# puppet file. changes will be overwritten.\n# -- sysadmin\n',
 }
 

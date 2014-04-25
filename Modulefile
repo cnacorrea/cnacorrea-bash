@@ -1,5 +1,5 @@
 name    'cnacorrea-bash'
-version '0.1.0'
+version '0.1.1'
 author 'cnacorrea'
 license 'Apache License, Version 2.0'
 summary 'This module is meant to manage the bash shell environment.'

@@ -1,4 +1,4 @@
-SYSTEM="<% if @is_virtual %>virtual<% else %>physical<% end %>-<%= @operatingsystem %>-<%= @operatingsystemrelease %>"
+SYSTEM="<%= @virtual %>/<%= @operatingsystem %>-<%= @operatingsystemrelease %>"
 <% if @color %>
 COL_NORM="\[$(tput sgr0)\]"
 COL_BOLD="\[$(tput bold)\]"
@@ -7,6 +7,5 @@ COL_RED="${COL_BOLD}\[$(tput setaf 1)\]"
 COL_WHITE="${COL_BOLD}\[$(tput setaf 7)\]"
 export PS1="${COL_YELLOW}[${COL_WHITE}${SYSTEM}${COL_YELLOW}][${COL_WHITE}\u${COL_RED}@${COL_WHITE}\h${COL_YELLOW}]${COL_NORM}\w${COL_YELLOW}(${COL_WHITE}\#${COL_YELLOW})${COL_RED}\$${COL_NORM} "
 <% else %>
-export PS1="[${SYSTEM}][\u@\h \W](\#)\\$"
-
+export PS1="[${SYSTEM}][\u@\h \W](\#)\$ "
 <% end %>

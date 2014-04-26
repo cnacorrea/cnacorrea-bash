@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ID="$(curl -s http://169.254.169.254/latest/meta-data/instance-id)"
+
+if [ "$ID" != "" ]; then
+  echo "amazon=true"
+  echo "aws_instanceid=${ID}"
+  echo "aws_availzone=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)"
+  echo "aws_insttype=$(curl -s http://169.254.169.254/latest/meta-data/instance-type)"
+else
+  echo "amazon=false"
+fi

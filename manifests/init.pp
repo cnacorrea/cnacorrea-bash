@@ -6,6 +6,7 @@
 # it will add a cnacorrea-bash.sh script to the /etc/profile.d directory
 # with the desired settings.
 #
+# test
 # === Parameters
 #
 # [*umask*]

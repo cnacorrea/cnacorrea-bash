@@ -88,6 +88,6 @@ class bash (
   concat::fragment { 'cnacorrea-bash_timeout':
     target  => 'cnacorrea-bash_file',
     content => template('bash/400-bash-timeout.sh.erb'),
-    order   => '400',
+    order  => '400',
   }
 }

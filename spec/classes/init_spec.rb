@@ -10,5 +10,5 @@ describe "bash", :type => :class  do
       :concat_basedir => '/specbash',
     }
   end
-#  it { should contain_class("bash") }
+  it { should contain_class("bash") }
 end

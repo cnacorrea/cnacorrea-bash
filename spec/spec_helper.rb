@@ -14,6 +14,7 @@ RSpec.configure do |c|
 
   # Configure all nodes in nodeset
   c.before :suite do
-  shell 'puppet module install puppetlabs/concat'
+    puppet_module_install(:source => proj_root + '/spec/fixtures/modules/concat', :module_name => 'concat')
+    shell 'puppet module install puppetlabs/concat'
   end
 end

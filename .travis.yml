@@ -6,7 +6,6 @@ rvm:
   - 2.0.0
 script:
   - "bundle exec rake spec SPEC_OPTS='--format documentation'"
-  - "bundle exec rake lint SPEC_OPTS='--format documentation'"
 branches:
   only:
     master

@@ -1,6 +1,6 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
-require 'rspec-system/spec_helper'
-require 'rspec-system-puppet/helpers'
+#require 'rspec-system/spec_helper'
+#require 'rspec-system-puppet/helpers'
 
 #include RSpecSystemPuppet::Helpers
 #

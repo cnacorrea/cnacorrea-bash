@@ -1,4 +1,4 @@
-SYSTEM="<% if @amazon == "true" %><%= @aws_availzone %><% else %><%= @virtual %><% end %>/<%= @operatingsystem %>-<%= @operatingsystemrelease %>"
+SYSTEM="<% if is_virtual %>virtual<% else %>physical<% end %>/<%= @operatingsystem %>-<%= @operatingsystemrelease %>"
 <% if @color %>
 COL_NORM="\[$(tput sgr0)\]"
 COL_BOLD="\[$(tput bold)\]"

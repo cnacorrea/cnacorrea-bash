@@ -18,9 +18,6 @@ describe 'bash' do
 		}
 	end
 		it do
-		       	should contain_concat__fragment('cnacorrea-bash_header').with( 'target' => '/etc/profile.d/cnacorrea-bash.sh' )
-		end
-		it do
 		       	should contain_class('bash')
 		end
 	end

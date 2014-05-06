@@ -36,7 +36,12 @@ limitations under the License.
 Contact
 -------
 Carlos N. A. Correa <carlos.nilton@gmail.com>
+Renan Vicente Gomes da Silva <renanvice@gmail.com>
 
 Support
 -------
 Please mail directly for any issues or questions.
+
+Testing
+-------
+[![Build Status](https://travis-ci.org/cnacorrea/cnacorrea-bash.svg?branch=master)](https://travis-ci.org/cnacorrea/cnacorrea-bash.svg)

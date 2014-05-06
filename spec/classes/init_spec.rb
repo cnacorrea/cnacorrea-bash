@@ -7,7 +7,11 @@ describe 'bash' do
 	let(:facts) { { :ipaddress => '10.10.20.20' } }
 
 	describe 'Test standard configuration' do
-		should contain_concat__fragment('cnacorrea-bash_header').with( 'target' => '/etc/profile.d/cnacorrea-bash.sh' )
-		it { should contain_class('bash') }
+		it do
+		       	should contain_concat__fragment('cnacorrea-bash_header').with( 'target' => '/etc/profile.d/cnacorrea-bash.sh' )
+		end
+		it do
+		       	should contain_class('bash')
+		end
 	end
 end

@@ -8,7 +8,7 @@ network proxy and idle session timeout. When applied to a host,
 
 it will add a cnacorrea-bash.sh script to the /etc/profile.d directory with the desired settings.
 
-* A sample use would be:
+A sample use would be:
 
     class { bash:
       umask         => '0022',

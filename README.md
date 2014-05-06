@@ -10,13 +10,13 @@ it will add a cnacorrea-bash.sh script to the /etc/profile.d directory with the 
 
 * A sample use would be:
 
-  class { bash:
-    umask         => '0022',
-    network_proxy => 'proxy.cnacorrea.it:3128',
-    timeout       => '900',
-    color         => 'true'
-    header        => '# puppet file. changes will be overwritten.\n# -- sysadmin\n',
-  }
+    class { bash:
+      umask         => '0022',
+      network_proxy => 'proxy.cnacorrea.it:3128',
+      timeout       => '900',
+      color         => 'true'
+      header        => '# puppet file. changes will be overwritten.\n# -- sysadmin\n',
+    }
 
 License
 -------

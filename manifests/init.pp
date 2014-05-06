@@ -6,6 +6,7 @@
 # it will add a cnacorrea-bash.sh script to the /etc/profile.d directory
 # with the desired settings.
 #
+# test
 # === Parameters
 #
 # [*umask*]
@@ -87,6 +88,6 @@ class bash (
   concat::fragment { 'cnacorrea-bash_timeout':
     target  => 'cnacorrea-bash_file',
     content => template('bash/400-bash-timeout.sh.erb'),
-    order   => '400',
+    order  => '400',
   }
 }

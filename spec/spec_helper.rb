@@ -1,10 +1,17 @@
-## Automate test using rspec
-require 'rspec-puppet'
+require 'puppetlabs_spec_helper/module_spec_helper'
+#require 'rspec-system/spec_helper'
+#require 'rspec-system-puppet/helpers'
 
-fixture_path = File.expand_path(File.join(__FILE__, '..', '..', 'fixtures'))
-
-RSpec.configure do |c|
-  c.module_path = File.join(fixture_path, 'modules')
-  c.manifest_dir = File.join(fixture_path, 'manifests')
-end
-
+#include RSpecSystemPuppet::Helpers
+#
+#
+#RSpec.configure do |c|
+#  # Project root
+#  proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+#
+#  # Configure all nodes in nodeset
+#  c.before :suite do
+#    puppet_module_install(:source => proj_root + '/spec/fixtures/modules/concat', :module_name => 'concat')
+#    shell 'puppet module install puppetlabs/concat'
+#  end
+#end

@@ -1,19 +1,22 @@
-bash
+# Puppet module: cnacorrea-bash
 
-This module is meant to manage the bash shell environment. It provides a sysadmin-friendly
-prompt, and can be used enforce system's default umask, network proxy and idle session
-timeout. When applied to a host, it will add a cnacorrea-bash.sh script to the
-/etc/profile.d directory with the desired settings.
+This module is meant to manage the bash shell environment.
 
-A sample use would be:
+It provides a sysadmin-friendly prompt, and can be used enforce system's default umask,
 
-class { bash:
-  umask         => '0022',
-  network_proxy => 'proxy.cnacorrea.it:3128',
-  timeout       => '900',
-  color         => 'true'
-  header        => '# puppet file. changes will be overwritten.\n# -- sysadmin\n',
-}
+network proxy and idle session timeout. When applied to a host,
+
+it will add a cnacorrea-bash.sh script to the /etc/profile.d directory with the desired settings.
+
+* A sample use would be:
+
+  class { bash:
+    umask         => '0022',
+    network_proxy => 'proxy.cnacorrea.it:3128',
+    timeout       => '900',
+    color         => 'true'
+    header        => '# puppet file. changes will be overwritten.\n# -- sysadmin\n',
+  }
 
 License
 -------
@@ -36,6 +39,7 @@ limitations under the License.
 Contact
 -------
 Carlos N. A. Correa <carlos.nilton@gmail.com>
+
 Renan Vicente Gomes da Silva <renanvice@gmail.com>
 
 Support

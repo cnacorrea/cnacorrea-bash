@@ -1,9 +1,3 @@
-/.gradle
-/metadata.json
-/.rvmrc
-build
-pkg/
-Session.vim
-spec/fixtures
-.*.sw[a-z]
-*.un~
+spec/fixtures/modules/*
+spec/fixtures/manifests/*
+*swp
